@@ -1,0 +1,25 @@
+# Day 4: Email Slicer
+# Author: Your Name
+# Concepts: String Handling, Functions, Validation
+
+def email_slicer(email):
+    if "@" not in email or "." not in email:
+        return "Invalid Email Format"
+
+    username = email[:email.index("@")]
+    domain = email[email.index("@") + 1:]
+
+    return username, domain
+
+
+# Example usage
+if __name__ == "__main__":
+    email = input("Enter your email: ")
+
+    result = email_slicer(email)
+
+    if isinstance(result, tuple):
+        print("Username:", result[0])
+        print("Domain:", result[1])
+    else:
+        print(result)
