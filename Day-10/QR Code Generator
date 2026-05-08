@@ -1,0 +1,27 @@
+# Day 10: QR Code Generator
+# Author: Anisa Kazi
+# Concepts: External Libraries, User Input, File Saving
+
+import qrcode
+
+def generate_qr(data, filename):
+    qr = qrcode.QRCode(
+        version=1,
+        box_size=10,
+        border=5
+    )
+
+    qr.add_data(data)
+    qr.make(fit=True)
+
+    image = qr.make_image(fill_color="black", back_color="white")
+    image.save(filename)
+
+    print(f"QR Code saved as {filename}")
+
+
+if __name__ == "__main__":
+    data = input("Enter text or URL: ")
+    filename = input("Enter file name (example: qr.png): ")
+
+    generate_qr(data, filename)
