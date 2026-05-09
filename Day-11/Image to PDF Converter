@@ -1,0 +1,29 @@
+# Day 11: Image to PDF Converter
+# Author: Anisa Kazi
+# Concepts: File Handling, PIL Library, Image Processing
+
+from PIL import Image
+
+def image_to_pdf(image_path, pdf_path):
+    try:
+        image = Image.open(image_path)
+
+        # Convert image to RGB mode
+        if image.mode == "RGBA":
+            image = image.convert("RGB")
+
+        image.save(pdf_path, "PDF")
+
+        print(f"PDF created successfully: {pdf_path}")
+
+    except FileNotFoundError:
+        print("Image file not found!")
+    except Exception as e:
+        print("Error:", e)
+
+
+if __name__ == "__main__":
+    image_path = input("Enter image file name: ")
+    pdf_path = input("Enter output PDF file name: ")
+
+    image_to_pdf(image_path, pdf_path)
