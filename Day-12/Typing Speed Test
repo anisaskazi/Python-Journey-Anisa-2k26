@@ -1,0 +1,38 @@
+# Day 12: Typing Speed Test
+# Author: Anisa Kazi
+# Concepts: time module, string comparison, user input
+
+import time
+
+sample_text = "Python is a powerful programming language"
+
+def typing_test():
+    print("===== Typing Speed Test =====")
+    print("\nType the following sentence:\n")
+    print(sample_text)
+
+    input("\nPress Enter when you are ready...")
+
+    start_time = time.time()
+
+    typed_text = input("\nStart typing:\n")
+
+    end_time = time.time()
+
+    time_taken = end_time - start_time
+
+    typed_words = len(typed_text.split())
+    speed = (typed_words / time_taken) * 60
+
+    print("\n===== Result =====")
+    print(f"Time Taken : {time_taken:.2f} seconds")
+    print(f"Typing Speed: {speed:.2f} words per minute")
+
+    if typed_text == sample_text:
+        print("Accuracy: 100%")
+    else:
+        print("Accuracy: Needs Improvement")
+
+
+if __name__ == "__main__":
+    typing_test()
