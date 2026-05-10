@@ -1,0 +1,19 @@
+# Day 12: System Information Viewer
+# Author: Anisa Kazi
+# Concepts: platform module, system information, functions
+
+import platform
+
+def system_info():
+    print("===== System Information =====\n")
+
+    print("System       :", platform.system())
+    print("Node Name    :", platform.node())
+    print("Release      :", platform.release())
+    print("Version      :", platform.version())
+    print("Machine      :", platform.machine())
+    print("Processor    :", platform.processor())
+
+
+if __name__ == "__main__":
+    system_info()
