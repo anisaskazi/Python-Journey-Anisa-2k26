@@ -1,0 +1,39 @@
+# Day 13: Currency Converter
+# Author: Anisa Kazi
+# Concepts: Functions, Dictionary, User Input, Conditional Statements
+
+exchange_rates = {
+    "USD": 83.20,
+    "EUR": 90.50,
+    "GBP": 105.30,
+    "JPY": 0.56
+}
+
+def convert_currency(amount, currency):
+    if currency in exchange_rates:
+        return amount * exchange_rates[currency]
+    else:
+        return None
+
+
+def main():
+    print("===== Currency Converter =====")
+    print("Available currencies: USD, EUR, GBP, JPY")
+
+    try:
+        amount = float(input("Enter amount: "))
+        currency = input("Enter currency code: ").upper()
+
+        result = convert_currency(amount, currency)
+
+        if result is not None:
+            print(f"{amount} {currency} = ₹{result:.2f}")
+        else:
+            print("Invalid currency code!")
+
+    except ValueError:
+        print("Please enter a valid amount.")
+
+
+if __name__ == "__main__":
+    main()
