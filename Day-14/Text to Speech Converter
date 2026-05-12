@@ -1,0 +1,21 @@
+# Day 14: Text to Speech Converter
+# Author: Anisa Kazi
+# Concepts: External Libraries, Functions, User Input
+
+import pyttsx3
+
+def text_to_speech(text):
+    engine = pyttsx3.init()
+
+    engine.setProperty('rate', 150)   # Speed of speech
+    engine.setProperty('volume', 1.0) # Volume level
+
+    print("Speaking...")
+    engine.say(text)
+    engine.runAndWait()
+
+
+if __name__ == "__main__":
+    text = input("Enter text to convert into speech: ")
+
+    text_to_speech(text)
