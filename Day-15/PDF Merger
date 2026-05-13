@@ -1,0 +1,34 @@
+# Day 15: PDF Merger
+# Author: Anisa Kazi
+# Concepts: File Handling, External Libraries, Lists
+
+from PyPDF2 import PdfMerger
+
+def merge_pdfs(pdf_list, output_file):
+    try:
+        merger = PdfMerger()
+
+        for pdf in pdf_list:
+            merger.append(pdf)
+
+        merger.write(output_file)
+        merger.close()
+
+        print(f"Merged PDF saved as: {output_file}")
+
+    except Exception as e:
+        print("Error:", e)
+
+
+if __name__ == "__main__":
+    pdf_files = []
+
+    n = int(input("Enter number of PDF files: "))
+
+    for i in range(n):
+        file_name = input(f"Enter PDF file {i+1}: ")
+        pdf_files.append(file_name)
+
+    output_file = input("Enter output PDF name: ")
+
+    merge_pdfs(pdf_files, output_file)
