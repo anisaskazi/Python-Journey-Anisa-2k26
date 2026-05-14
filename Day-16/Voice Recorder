@@ -1,0 +1,33 @@
+# Day 16: Voice Recorder
+# Author: Anisa Kazi
+# Concepts: External Libraries, Audio Recording, File Saving
+
+import sounddevice as sd
+from scipy.io.wavfile import write
+
+def record_voice(duration, filename):
+    sample_rate = 44100
+
+    print("Recording started...")
+    recording = sd.rec(
+        int(duration * sample_rate),
+        samplerate=sample_rate,
+        channels=2
+    )
+
+    sd.wait()
+
+    write(filename, sample_rate, recording)
+
+    print(f"Recording saved as {filename}")
+
+
+if __name__ == "__main__":
+    try:
+        duration = int(input("Enter recording duration in seconds: "))
+        filename = input("Enter file name (example: voice.wav): ")
+
+        record_voice(duration, filename)
+
+    except ValueError:
+        print("Please enter a valid duration.")
