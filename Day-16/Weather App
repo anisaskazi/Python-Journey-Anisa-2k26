@@ -1,0 +1,36 @@
+# Day 16: Weather App
+# Author: Anisa Kazi
+# Concepts: API Requests, JSON Data, User Input
+
+import requests
+
+API_KEY = "YOUR_API_KEY"
+
+def get_weather(city):
+    url = f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
+
+    try:
+        response = requests.get(url)
+        data = response.json()
+
+        if data["cod"] == 200:
+            city_name = data["name"]
+            temperature = data["main"]["temp"]
+            weather = data["weather"][0]["description"]
+
+            print("\n===== Weather Report =====")
+            print("City:", city_name)
+            print("Temperature:", temperature, "°C")
+            print("Condition:", weather)
+
+        else:
+            print("City not found!")
+
+    except Exception as e:
+        print("Error:", e)
+
+
+if __name__ == "__main__":
+    city = input("Enter city name: ")
+
+    get_weather(city)
