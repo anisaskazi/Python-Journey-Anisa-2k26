@@ -1,0 +1,23 @@
+# Day 17: Screenshot Capture Tool
+# Author: Anisa Kazi
+# Concepts: External Libraries, File Saving, Functions
+
+import pyautogui
+from datetime import datetime
+
+def take_screenshot():
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+    file_name = f"screenshot_{timestamp}.png"
+
+    screenshot = pyautogui.screenshot()
+
+    screenshot.save(file_name)
+
+    print(f"Screenshot saved as {file_name}")
+
+
+if __name__ == "__main__":
+    input("Press Enter to capture screenshot...")
+
+    take_screenshot()
