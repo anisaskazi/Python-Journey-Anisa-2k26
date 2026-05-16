@@ -1,0 +1,27 @@
+# Day 18: YouTube Video Downloader
+# Author: Anisa Kazi
+# Concepts: External Libraries, User Input, File Downloading
+
+from pytube import YouTube
+
+def download_video(url):
+    try:
+        yt = YouTube(url)
+
+        print("Title :", yt.title)
+        print("Downloading...")
+
+        stream = yt.streams.get_highest_resolution()
+
+        stream.download()
+
+        print("Download completed successfully!")
+
+    except Exception as e:
+        print("Error:", e)
+
+
+if __name__ == "__main__":
+    video_url = input("Enter YouTube video URL: ")
+
+    download_video(video_url)
