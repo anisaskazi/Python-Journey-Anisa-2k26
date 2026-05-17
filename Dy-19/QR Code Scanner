@@ -1,0 +1,24 @@
+# Day 19: QR Code Scanner
+# Author: Anisa Kazi
+# Concepts: OpenCV, Image Processing, External Libraries
+
+import cv2
+
+def scan_qr_code(image_path):
+    detector = cv2.QRCodeDetector()
+
+    image = cv2.imread(image_path)
+
+    data, vertices_array, _ = detector.detectAndDecode(image)
+
+    if vertices_array is not None:
+        print("QR Code Detected!")
+        print("Data:", data)
+    else:
+        print("No QR Code found.")
+
+
+if __name__ == "__main__":
+    image_path = input("Enter QR code image path: ")
+
+    scan_qr_code(image_path)
