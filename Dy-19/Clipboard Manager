@@ -1,0 +1,56 @@
+# Day 19: Clipboard Manager
+# Author: Anisa Kazi
+# Concepts: pyperclip module, file handling, loops
+
+import pyperclip
+
+clipboard_history = []
+
+def copy_text():
+    text = input("Enter text to copy: ")
+
+    pyperclip.copy(text)
+
+    clipboard_history.append(text)
+
+    print("Text copied to clipboard!\n")
+
+
+def show_history():
+    if not clipboard_history:
+        print("Clipboard history is empty.\n")
+        return
+
+    print("\n===== Clipboard History =====")
+
+    for index, item in enumerate(clipboard_history, start=1):
+        print(f"{index}. {item}")
+
+    print()
+
+
+def main():
+    while True:
+        print("===== Clipboard Manager =====")
+        print("1. Copy Text")
+        print("2. Show Clipboard History")
+        print("3. Exit")
+
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            copy_text()
+
+        elif choice == "2":
+            show_history()
+
+        elif choice == "3":
+            print("Exiting program...")
+            break
+
+        else:
+            print("Invalid choice!\n")
+
+
+if __name__ == "__main__":
+    main()
