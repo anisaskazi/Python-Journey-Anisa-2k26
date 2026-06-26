@@ -1,0 +1,74 @@
+# Day 36 - AI Mood-Based Music Recommender
+# Author: Anisa Kazi
+# Description: This program detects mood from user text and recommends songs.
+
+def detect_mood(text):
+    text = text.lower()
+
+    happy_words = ["happy", "excited", "joy", "great", "awesome", "good", "smile"]
+    sad_words = ["sad", "cry", "lonely", "bad", "upset", "broken", "depressed"]
+    angry_words = ["angry", "mad", "furious", "irritated", "annoyed"]
+    relaxed_words = ["relaxed", "calm", "peace", "chill", "quiet"]
+
+    if any(word in text for word in happy_words):
+        return "Happy"
+    elif any(word in text for word in sad_words):
+        return "Sad"
+    elif any(word in text for word in angry_words):
+        return "Angry"
+    elif any(word in text for word in relaxed_words):
+        return "Relaxed"
+    else:
+        return "Neutral"
+
+
+def recommend_music(mood):
+    songs = {
+        "Happy": [
+            "Happy - Pharrell Williams",
+            "On Top of the World - Imagine Dragons",
+            "Can't Stop the Feeling - Justin Timberlake"
+        ],
+        "Sad": [
+            "Let Her Go - Passenger",
+            "Someone Like You - Adele",
+            "Fix You - Coldplay"
+        ],
+        "Angry": [
+            "Believer - Imagine Dragons",
+            "Numb - Linkin Park",
+            "Stronger - Kanye West"
+        ],
+        "Relaxed": [
+            "Perfect - Ed Sheeran",
+            "Weightless - Marconi Union",
+            "Sunflower - Post Malone"
+        ],
+        "Neutral": [
+            "Counting Stars - OneRepublic",
+            "Memories - Maroon 5",
+            "Viva La Vida - Coldplay"
+        ]
+    }
+
+    return songs[mood]
+
+
+def main():
+    print("🎧 AI Mood-Based Music Recommender")
+    print("----------------------------------")
+
+    user_text = input("How are you feeling today? ")
+
+    mood = detect_mood(user_text)
+    recommendations = recommend_music(mood)
+
+    print("\nDetected Mood:", mood)
+    print("\nRecommended Songs:")
+
+    for index, song in enumerate(recommendations, start=1):
+        print(f"{index}. {song}")
+
+
+if __name__ == "__main__":
+    main()
